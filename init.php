@@ -1,6 +1,6 @@
 <?php
 
-require_once realpath(dirname(__FILE__) . '/vendor/twitteroauth/twitteroauth.php');
+require "vendor/autoload.php";
 
 Route::set('twitter-auth', 'twitter/auth')
 ->defaults(array(
