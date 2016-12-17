@@ -7,11 +7,16 @@ class Twitterauth_Core extends TwitterOAuth {
 	public static $token_name = 'twitterauth_tokens';
 	public $config;
 
-	function __construct($consumer_key = NULL, $consumer_secret = NULL, $oauth_token = NULL, $oauth_token_secret = NULL)
+	function __construct($consumerKey = NULL, $consumerSecret = NULL, $oauthToken = NULL, $oauthTokenSecret = NULL)
 	{
 		$this->config = Kohana::$config->load('twitterauth');
 
-		parent::__construct($this->config->consumer_key, $this->config->consumer_secret);
+		$consumerKey      = $consumerKey?:$this->config->consumerKey;
+		$consumerSecret   = $consumerSecret?:$this->config->consumerSecret;
+		$oauthToken       = $oauthToken?:$this->config->oauthToken;
+		$oauthTokenSecret = $oauthTokenSecret?:$this->config->oauthTokenSecret;
+
+		parent::__construct($consumerKey, $consumerSecret, $oauthToken, $oauthTokenSecret);
 	}
 
 	public static function factory()
@@ -21,12 +26,9 @@ class Twitterauth_Core extends TwitterOAuth {
 
 	function init()
 	{
-		if (!isset($_SESSION[self::$token_name]))
-		{
+		if (!isset($_SESSION[self::$token_name])) {
 			$this->getRequestToken();
-		}
-		else
-		{
+		} else {
 			$token = $_SESSION[self::$token_name];
 			$this->setOauthToken($token['oauth_token'], $token['oauth_token_secret']);
 		}

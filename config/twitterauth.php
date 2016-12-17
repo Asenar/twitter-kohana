@@ -1,6 +1,8 @@
 <?php
 
-return array(
-	'consumer_key' => '',
-	'consumer_secret' => ''
-);
+return [
+	'consumerKey'      => '',
+	'consumerSecret'   => '',
+	'oauthToken'       => '',
+	'oauthTokenSecret' => '',
+];

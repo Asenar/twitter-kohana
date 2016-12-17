@@ -5,13 +5,17 @@ This module uses git://github.com/abraham/twitteroauth.git and provide an easier
 
 # Usage:
 
+Create your application in https://apps.twitter.com/ , then set the configuration with the keys
+
 ### Set your APPPATH/config/twitterauth.php with
 
 ```php
-return array(
-  'consumer_key' => 'get it from dev.twitter.com',
-  'consumer_secret' => 'get it from dev.twitter.com'
-);
+return [
+  'consumerKey'      => '',
+  'consumerSecret'   => '',
+  'oauthToken'       => '',
+  'oauthTokenSecret' => '',
+];
 ```
 
 ### In your controller, check if the user is already logged in:
